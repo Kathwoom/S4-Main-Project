@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result - Single Model Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-image: url('../static/tb.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .result-container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .result-box {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <div class="result-box">
+            <h1>Single Model Prediction Result</h1>
+            <p>Uploaded Image: {{ filename }}</p>
+            <p class="result">Prediction: {{ prediction }}</p>
+            <a href="/" class="button">Go Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

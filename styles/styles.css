@@ -1,0 +1,40 @@
+/* style.css */
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Set background color */
+    background-image: url('background.jpg'); /* Set background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+    color: #333; /* Text color */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Heading styles */
+h1 {
+    text-align: center; /* Center align heading */
+    margin-top: 50px; /* Add space at the top */
+}
+
+/* Form styles */
+form {
+    text-align: center; /* Center align form */
+    margin-top: 20px; /* Add space at the top */
+}
+
+/* Result container styles */
+.result-container {
+    max-width: 600px; /* Set maximum width for result container */
+    margin: 20px auto; /* Center the result container */
+    background-color: #fff; /* Set background color */
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Add border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+/* Result styles */
+.result {
+    text-align: center; /* Center align result */
+}

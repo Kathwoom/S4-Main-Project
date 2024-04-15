@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results of All Models</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-G2l04FU03G9jNNs9wXvfTvNkRvoVV+B0PBM8GPw+L2WvdlRu6Vh76Ab1PUpSUNnK3uG1xegQxKVQtrKdMcKY6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="result-container">
+        <h1>Results of All Models</h1>
+        {% for model_name, result in results.items() %}
+        <div class="result">
+            <h2>{{ model_name }}</h2>
+            <p>Result: {{ result }}</p>
+        </div>
+        {% endfor %}
+        <a href="/" class="button">Go Back</a>
+    </div>
+</body>
+</html>

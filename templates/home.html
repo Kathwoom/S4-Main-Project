@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-G2l04FU03G9jNNs9wXvfTvNkRvoVV+B0PBM8GPw+L2WvdlRu6Vh76Ab1PUpSUNnK3uG1xegQxKVQtrKdMcKY6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .homepage-container {
+            background-image: url('../static/tb.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center vertically */
+            align-items: center;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .project-name {
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 100px;
+            margin-top: 20px;
+            color:azure;
+            margin-bottom: 300px;
+        }
+        .button-box {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            /* align-items: center; / / Remove this line */
+        }
+        .button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="homepage-container">
+        <!-- Project Name -->
+        <div class="project-name">TB DIAGNOSIS</div>
+
+        <!-- Button for Uploading X-ray Image -->
+        <div class="button-box">
+            <i class="fas fa-cloud-upload-alt icon"></i> <button class="button" onclick="window.location.href='/upload'">ENTER
+            </button>
+        </div>
+    </div>
+</body>
+</html>

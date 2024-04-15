@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload X-ray Image</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-image: url('../static/tb.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="file"] {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+        select {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+        .button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        #imageContainer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #uploadedImage {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+
+</head>
+<body class="index-background">
+    <div class="container">
+        <h1>Upload X-ray Image</h1>
+        <form action="/predict_single" method="post" enctype="multipart/form-data" id="uploadFormSingle">
+            <!-- Input for uploading image file -->
+            <input type="file" name="file" id="imageInputSingle" accept="image/*" required>
+            <!-- Dropdown list for selecting model -->
+            <select name="model">
+                {% for model_name in model_names %}
+                <option value="{{ model_name }}">{{ model_name }}</option>
+                {% endfor %}
+            </select>
+            <!-- Hidden preview image -->
+            <input type="hidden" name="imageData" id="imageDataSingle">
+            <!-- Submit button for single model prediction -->
+            <input type="button" value="Predict Single Model" class="button" id="predictSingleButton">
+        </form>
+        <form action="/predict_multiple" method="post" enctype="multipart/form-data" id="uploadFormMultiple">
+            <!-- Input for uploading image file -->
+            <input type="file" name="file" id="imageInputMultiple" accept="image/*" required>
+            <!-- Hidden preview image -->
+            <input type="hidden" name="imageData" id="imageDataMultiple">
+            <!-- Submit button for multiple models prediction -->
+            <input type="button" value="Predict Multiple Models" class="button" id="predictMultipleButton">
+        </form>
+        <!-- Image preview -->
+        <div id="imageContainer"></div>
+    </div>
+
+    <!-- JavaScript to display the uploaded image and submit the forms -->
+    <script>
+        // Function to display the uploaded image
+        function displayImage(input) {
+            var file = input.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var imageData = e.target.result;
+                    document.getElementById('imageContainer').innerHTML = '<img src="' + imageData + '" id="uploadedImage">';
+                    document.getElementById('imageDataSingle').value = imageData;
+                    document.getElementById('imageDataMultiple').value = imageData;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Call displayImage function when file input changes for single model prediction
+        document.getElementById('imageInputSingle').addEventListener('change', function() {
+            displayImage(this);
+        });
+
+        // Call displayImage function when file input changes for multiple models prediction
+        document.getElementById('imageInputMultiple').addEventListener('change', function() {
+            displayImage(this);
+        });
+
+        // Submit the form for single model prediction when predictSingleButton is clicked
+        document.getElementById('predictSingleButton').addEventListener('click', function() {
+            document.getElementById('uploadFormSingle').submit();
+        });
+
+        // Submit the form for multiple models prediction when predictMultipleButton is clicked
+        document.getElementById('predictMultipleButton').addEventListener('click', function() {
+            document.getElementById('uploadFormMultiple').submit();
+        });
+    </script>
+</body>
+</html>
